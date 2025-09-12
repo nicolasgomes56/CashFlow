@@ -1,4 +1,5 @@
 ﻿using CashFlow.Communication.Requests;
+using CashFlow.Exception;
 using FluentValidation;
 
 namespace CashFlow.Application.UseCases.Expenses.Register;
@@ -8,18 +9,18 @@ public class RegisterExpenseValidator : AbstractValidator<RequestRegisterExpense
     {
         RuleFor(expense => expense.Title)
             .NotEmpty()
-            .WithMessage("O título é obrigatório.");
+            .WithMessage(ResourceErrorMessages.TITLE_REQUIRED);
 
         RuleFor(expense => expense.Amount)
             .GreaterThan(0)
-            .WithMessage("O valor deve ser maior que zero.");
+            .WithMessage(ResourceErrorMessages.AMOUNT_MUST_BE_GREATER_THAN_ZERO);
 
         RuleFor(expense => expense.Date)
             .LessThanOrEqualTo(DateTime.UtcNow)
-            .WithMessage("A data não pode ser no futuro.");
+            .WithMessage(ResourceErrorMessages.EXPENSES_CANNOT_FOR_THE_FUTURE);
 
         RuleFor(expense => expense.PaymentType)
             .IsInEnum()
-            .WithMessage("O tipo de pagamento é inválido.");
+            .WithMessage(ResourceErrorMessages.PAYMENTS_TYPE_INVALID);
     }
 }
