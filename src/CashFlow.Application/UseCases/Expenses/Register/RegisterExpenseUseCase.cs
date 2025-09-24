@@ -1,5 +1,7 @@
 ﻿using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
+using CashFlow.Domain.Entites;
+using CashFlow.Domain.Enums;
 using CashFlow.Exception.ExceptionsBase;
 
 namespace CashFlow.Application.UseCases.Expenses.Register;
@@ -10,6 +12,16 @@ public class RegisterExpenseUseCase
     {
         //TODO: Validações e Regras de Negócio
         Validate(request);
+
+
+        var expense = new Expense
+        {
+            Title = request.Title,
+            Description = request.Description,
+            Date = request.Date,
+            Amount = request.Amount,
+            paymentType = (PaymentType)request.PaymentType
+        };
 
         return new ResponseRegisterExpenseJson();
     }
