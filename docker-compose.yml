@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: bitnami/mysql:8.4
+    container_name: cashflow_mysql
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "cashflow@123"
+      MYSQL_USER: "cashflow_user"
+      MYSQL_DATABASE: "cashflow_db"
+      MYSQL_PASSWORD: "cashflow@123"
+    volumes:
+      - mysql_data:/bitnami/mysql/data
+
+volumes:
+  mysql_data:
