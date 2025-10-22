@@ -24,6 +24,7 @@ public class CultureMiddleware
         if (!string.IsNullOrWhiteSpace(requestedCulture)
             && supportedLanguages.Exists(c => c.Name.Equals(requestedCulture, StringComparison.InvariantCultureIgnoreCase)))
         {
+
             cultureInfo = new CultureInfo(requestedCulture);
         }
 

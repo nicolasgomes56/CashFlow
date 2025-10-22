@@ -1,7 +1,6 @@
 using CashFlow.API.Filters;
 using CashFlow.API.Middleware;
 using CashFlow.Application;
-using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
