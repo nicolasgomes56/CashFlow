@@ -2,7 +2,7 @@
 
 ## 📋 Descrição
 
-O **CashFlow** é um projeto de sistema de gestão financeira desenvolvido em .NET 8, que implementa as melhores práticas de desenvolvimento de software, incluindo **DDD (Domain Driven Design)**, **SOLID**, **Injeção de Dependência** e **Entity Framework**.
+O **CashFlow** é um projeto de sistema de gestão financeira desenvolvido em .NET 10, que implementa as melhores práticas de desenvolvimento de software, incluindo **DDD (Domain Driven Design)**, **SOLID**, **Injeção de Dependência** e **Entity Framework**.
 
 Este projeto foi criado como parte de um curso completo de desenvolvimento avançado em .NET, focando em código limpo, seguro e orientado ao domínio.
 
@@ -27,7 +27,7 @@ O projeto segue os princípios de **Domain Driven Design (DDD)** e **SOLID**, im
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **.NET 8**: Framework de desenvolvimento
+- **.NET 10**: Framework de desenvolvimento
 - **Entity Framework Core**: ORM para acesso a dados
 - **MySQL**: Banco de dados relacional
 - **Fluent Validation**: Validações elegantes e expressivas
@@ -39,7 +39,7 @@ O projeto segue os princípios de **Domain Driven Design (DDD)** e **SOLID**, im
 ## 🚀 Como Executar
 
 ### Pré-requisitos
-- .NET 8 SDK
+- .NET 10 SDK
 - MySQL Server
 - Visual Studio 2022 ou VS Code
 
