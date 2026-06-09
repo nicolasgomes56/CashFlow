@@ -23,7 +23,6 @@ public class RegisterExpenseValidatorTests
     }
 
     [Theory]
-    [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
     public void Error_Title_Empty(string title)

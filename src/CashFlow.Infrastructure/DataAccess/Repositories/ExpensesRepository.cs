@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CashFlow.Infrastructure.DataAccess.Repositories;
 
-internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteOnlyRepository, IExpensesUpdateOnlyRepository
+internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteOnlyRepository,
+    IExpensesUpdateOnlyRepository
 {
     private readonly CashFlowDbContext _dbContext;
 
@@ -12,6 +13,7 @@ internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteO
     {
         _dbContext = dbContext;
     }
+
     public async Task Add(Expense expense)
     {
         await _dbContext.Expenses
@@ -53,5 +55,19 @@ internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteO
     public void Update(Expense expense)
     {
         _dbContext.Expenses.Update(expense);
+    }
+
+    public async Task<List<Expense>> FilterByMonth(DateOnly date)
+    {
+        var startDate = new DateTime(year: date.Year, month: date.Month, day: 1).Date;
+        var daysInMonth = DateTime.DaysInMonth(year: date.Year, month: date.Month);
+        var endDate = new DateTime(year: date.Year, month: date.Month, day: daysInMonth, hour: 23, minute: 59, second: 59);
+
+        return await _dbContext.Expenses
+            .AsNoTracking()
+            .Where(x => x.Date >= startDate && x.Date <= endDate)
+            .OrderBy(x => x.Date)
+            .ThenBy(x => x.Title)
+            .ToListAsync();
     }
 }
